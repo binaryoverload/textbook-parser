@@ -7,6 +7,8 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
@@ -42,7 +44,7 @@ public class TextbookParser {
             int count = start;
 
             BlockingQueue<Integer> startQueue = new LinkedBlockingQueue<>();
-            ArrayList<Long> averageTimePerItem = new ArrayList<>();
+            List<Long> averageTimePerItem = Collections.synchronizedList(new ArrayList<>());
 
             while (!(count > end)) {
                 startQueue.put(count);
